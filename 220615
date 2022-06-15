@@ -1,0 +1,128 @@
+#define _CRT_SECURE_NO_WARNINGS
+
+//10815
+#if 0
+//300ms
+#include <iostream>
+using namespace std;
+
+#define MAXN (20000000+4)
+
+int N,M;
+int cur;
+int arr[MAXN];
+int main() {
+	scanf("%d", &N);
+	for (int i = 0; i < N; i++) {
+		scanf("%d", &cur);
+		arr[cur+10000000] = 1;
+	}
+	scanf("%d", &M);
+	for (int i = 0; i < M; i++) {
+		scanf("%d", &cur);
+		if (arr[cur + 10000000]) {
+			printf("1 ");
+		}
+		else printf("0 ");
+	}
+	return 0;
+}
+
+#endif
+
+#if 0
+//500ms
+#include <unordered_map>
+#include <iostream>
+#define _CRT_SECURE_NO_WARNINGS
+using namespace std;
+
+int N, M;
+int cur;
+unordered_map<int,int> Map;
+int main() {
+	scanf("%d", &N);
+	for (int i = 0; i < N; i++) {
+		scanf("%d", &cur);
+		Map[cur] = 1;
+	}
+	scanf("%d", &M);
+	for (int i = 0; i < M; i++) {
+		scanf("%d", &cur);
+		if (Map[cur]) {
+			printf("1 ");
+		}
+		else printf("0 ");
+	}
+	return 0;
+}
+#endif
+
+//1764
+#if 0
+//400ms
+#include <unordered_set>
+#include <set>
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int N, M;
+int cnt;
+unordered_set<string> dSet;
+set<string>ans;
+string target;
+int main() {
+	scanf("%d %d", &N, &M);
+	for (int i = 0; i < N; i++) {
+		cin >> target;
+		
+		dSet.insert(target);
+	}
+	for (int j = 0; j < N; j++) {
+		cin >> target;
+		if (dSet.find(target) != dSet.end()) {
+			cnt++;
+			ans.insert(target);
+		}
+	}
+	//printf("----------\n");
+	printf("%d\n", cnt);
+	for (auto a : ans) {
+		cout << a << endl;
+	}
+
+	return 0;
+}
+#endif
+
+#if 1
+//11478
+//560ms
+#include <unordered_set>
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int N, M;
+int cnt;
+unordered_set<string> Word;
+string target;
+string temp;
+int Size;
+int main() {
+	cin>>target;
+	Size = target.size();
+	for (int i = 0; i < Size; i++) {
+		temp = "";
+		for (int j = i; j < Size; j++) {
+			temp += target[j];
+			Word.insert(temp);
+		}
+	}
+	printf("%d", Word.size());
+	return 0;
+}
+#endif
