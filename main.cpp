@@ -17,7 +17,7 @@ int main() {
 }
 #endif
 
-#if 1
+#if 0
 #include <iostream>
 using namespace std;
 
@@ -49,5 +49,43 @@ int main(){
         else if(isInCircle(r,c)) ans++;
     }
     printf("%d\n",ans);
+}
+#endif
+
+#if 1
+#include <iostream>
+using namespace std;
+#define MAXN (50+2)
+int T, N,ans;
+int x1,x2,y1,y2;
+struct Circle{
+    int x,y,r;
+}circle[MAXN];
+int len, dist;
+void solve(){
+    ans=0;
+    for(int i=0;i<N;i++){
+        if( (circle[i].x-x1)*(circle[i].x-x1) + (circle[i].y-y1)*(circle[i].y-y1) <circle[i].r*circle[i].r){
+            if( (circle[i].x-x2)*(circle[i].x-x2) + (circle[i].y-y2)*(circle[i].y-y2) > circle[i].r * circle[i].r ) ans++;
+        }
+        if( (circle[i].x-x1)*(circle[i].x-x1) + (circle[i].y-y1)*(circle[i].y-y1) >circle[i].r*circle[i].r){
+            if( (circle[i].x-x2)*(circle[i].x-x2) + (circle[i].y-y2)*(circle[i].y-y2) < circle[i].r * circle[i].r ) ans++;
+        }
+    }
+
+
+}
+int main(){
+    scanf("%d",&T);
+    for(int tc=0;tc<T;tc++){
+        scanf("%d %d %d %d",&x1, &y1, &x2, &y2);
+        scanf("%d",&N);
+        for(int i=0;i<N;i++){
+            scanf("%d %d %d",&circle[i].x,&circle[i].y,&circle[i].r);
+        }
+        solve();
+        printf("%d\n",ans);
+    }
+    return 0;
 }
 #endif
