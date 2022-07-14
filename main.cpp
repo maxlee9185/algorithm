@@ -52,7 +52,7 @@ int main(){
 }
 #endif
 
-#if 1
+#if 0
 #include <iostream>
 using namespace std;
 #define MAXN (50+2)
@@ -85,6 +85,26 @@ int main(){
         }
         solve();
         printf("%d\n",ans);
+    }
+    return 0;
+}
+#endif
+
+#if 0
+//5086 배수와 약수
+#include <iostream>
+using namespace std;
+
+int main(){
+    int a,b;
+    while(1){
+        scanf("%d %d",&a,&b);
+        if(a==0 && b==0) break;
+        if(a>b && a%b==0) {
+            printf("multiple\n");
+        }
+        else if (a<b && b%a==0) printf("factor\n");
+        else printf("neither\n");
     }
     return 0;
 }
